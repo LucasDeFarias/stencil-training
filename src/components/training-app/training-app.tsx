@@ -1,4 +1,5 @@
 import { Component, h } from '@stencil/core';
+import { CurrencyAmount } from '../../models/currency-amount';
 
 @Component({
   tag: 'training-app',
@@ -6,10 +7,16 @@ import { Component, h } from '@stencil/core';
   shadow: true
 })
 export class TrainingApp {
+
+  currencyAmount: CurrencyAmount = {
+    amount: '14432.57',
+    currency: 'EUR'
+  }
   
   render() {
     return [
-      <h1>Training app!</h1>
+      <h1>Training app!</h1>,
+      <currency-formatter currencyAmount={this.currencyAmount} ></currency-formatter>
     ];
   }
 }

@@ -6,14 +6,25 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  CurrencyAmount,
+} from './models/currency-amount';
 
 export namespace Components {
+  interface CurrencyFormatter {
+    'currencyAmount': CurrencyAmount;
+  }
   interface TrainingApp {}
 }
 
 declare global {
 
+
+  interface HTMLCurrencyFormatterElement extends Components.CurrencyFormatter, HTMLStencilElement {}
+  var HTMLCurrencyFormatterElement: {
+    prototype: HTMLCurrencyFormatterElement;
+    new (): HTMLCurrencyFormatterElement;
+  };
 
   interface HTMLTrainingAppElement extends Components.TrainingApp, HTMLStencilElement {}
   var HTMLTrainingAppElement: {
@@ -21,14 +32,19 @@ declare global {
     new (): HTMLTrainingAppElement;
   };
   interface HTMLElementTagNameMap {
+    'currency-formatter': HTMLCurrencyFormatterElement;
     'training-app': HTMLTrainingAppElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface CurrencyFormatter extends JSXBase.HTMLAttributes<HTMLCurrencyFormatterElement> {
+    'currencyAmount'?: CurrencyAmount;
+  }
   interface TrainingApp extends JSXBase.HTMLAttributes<HTMLTrainingAppElement> {}
 
   interface IntrinsicElements {
+    'currency-formatter': CurrencyFormatter;
     'training-app': TrainingApp;
   }
 }
