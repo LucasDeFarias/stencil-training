@@ -5,7 +5,7 @@ import { CurrencyAmount } from '../../models/currency-amount';
   tag: 'currency-formatter',
   shadow: true
 })
-export class TrainingApp {
+export class CurrencyFormatter {
 
   formats = [
     {
