@@ -2,8 +2,7 @@ import { Component, Prop } from '@stencil/core';
 import { CurrencyAmount } from '../../models/currency-amount';
 
 @Component({
-  tag: 'currency-formatter',
-  shadow: true
+  tag: 'currency-formatter'
 })
 export class CurrencyFormatter {
 
