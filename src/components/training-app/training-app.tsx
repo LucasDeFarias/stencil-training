@@ -16,7 +16,7 @@ export class TrainingApp {
   render() {
     return [
       <h1>Training app!</h1>,
-      <currency-formatter currencyAmount={this.currencyAmount} ></currency-formatter>
+      <currency-formatter locale="es-ES" currencyAmount={this.currencyAmount} ></currency-formatter>
     ];
   }
 }

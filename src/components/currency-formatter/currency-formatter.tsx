@@ -6,33 +6,25 @@ import { CurrencyAmount } from '../../models/currency-amount';
 })
 export class CurrencyFormatter {
 
-  locale = {
-    'EUR': 'es-ES',
-    'USD': 'en-US'
-  }
-
   /**
    * The CurrencyAmount object that is intended
-   * to be formatted
+   * to be formatted.
    */
   @Prop() currencyAmount: CurrencyAmount;
 
-  format(locale: string): string {
-    const amountNumber = Number.parseFloat(this.currencyAmount.amount);
-    const formatter = new Intl.NumberFormat(locale, {
+  /**
+   * Parameter that defines user language.
+   */
+  @Prop() locale: string;
+
+  formattedCurrency(): string {
+    const formatter = new Intl.NumberFormat(this.locale, {
       style: 'currency',
       currency: this.currencyAmount.currency,
       minimumFractionDigits: 2
     });
-    return formatter.format(amountNumber);
-  }
-
-  formattedCurrency(): string {
-    try {
-      return this.format(this.locale[this.currencyAmount.currency]);
-    } catch (e) {
-      throw Error(`Invalid number: ${this.currencyAmount.amount}`);
-    }
+    const amountNumber = Number.parseFloat(this.currencyAmount.amount);
+    return formatter.format(amountNumber); 
   }
 
   render() {
