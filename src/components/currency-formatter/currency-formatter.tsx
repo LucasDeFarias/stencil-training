@@ -6,34 +6,31 @@ import { CurrencyAmount } from '../../models/currency-amount';
 })
 export class CurrencyFormatter {
 
-  formats = [
-    {
-      // Fallback format if currency is unknown
-      currency: 'default',
-      formatFn: (c: CurrencyAmount) => {
-        return `${c.amount}${c.currency}`
-      }
-    },
-    {
-      currency: 'EUR',
-      formatFn: (c: CurrencyAmount): string => {
-        const amountNumber = Number.parseFloat(c.amount);
-        const formattedNumber: string = amountNumber
-          .toFixed(2)
-          .replace('.', ',')
-          .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-        return `${formattedNumber}€`;
-      }
-    },
-  ];
+  locale = {
+    'EUR': 'es-ES',
+    'USD': 'en-US'
+  }
 
+  /**
+   * The CurrencyAmount object that is intended
+   * to be formatted
+   */
   @Prop() currencyAmount: CurrencyAmount;
+
+  format(locale: string): string {
+    const amountNumber = Number.parseFloat(this.currencyAmount.amount);
+    const formatter = new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: this.currencyAmount.currency,
+      minimumFractionDigits: 2
+    });
+    return formatter.format(amountNumber);
+  }
 
   formattedCurrency(): string {
     try {
-      return (this.formats.find(f => f.currency === this.currencyAmount.currency) || this.formats[0])
-        .formatFn(this.currencyAmount);
-    } catch(e) {
+      return this.format(this.locale[this.currencyAmount.currency]);
+    } catch (e) {
       throw Error(`Invalid number: ${this.currencyAmount.amount}`);
     }
   }

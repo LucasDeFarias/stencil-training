@@ -12,6 +12,9 @@ import {
 
 export namespace Components {
   interface CurrencyFormatter {
+    /**
+    * The CurrencyAmount object that is intended to be formatted
+    */
     'currencyAmount': CurrencyAmount;
   }
   interface TrainingApp {}
@@ -39,6 +42,9 @@ declare global {
 
 declare namespace LocalJSX {
   interface CurrencyFormatter extends JSXBase.HTMLAttributes<HTMLCurrencyFormatterElement> {
+    /**
+    * The CurrencyAmount object that is intended to be formatted
+    */
     'currencyAmount'?: CurrencyAmount;
   }
   interface TrainingApp extends JSXBase.HTMLAttributes<HTMLTrainingAppElement> {}
