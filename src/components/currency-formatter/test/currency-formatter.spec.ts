@@ -1,16 +1,19 @@
 import { CurrencyFormatter } from '../currency-formatter';
 
-class FakeNumberFormat extends Intl.NumberFormat {
-  format(num: number) {
-    return '1.214.300,02 €';
-  }
-}
-
 describe('CurrencyFormatter', () => {
+  const RealNumberFormat = Intl.NumberFormat;
+
+  function mockNumberFormat() {
+    return <any> class FakeNumberFormat {
+      format() {
+        return '1.214.300,02 €';
+      }
+    }   
+  }
 
   it('should return 1.214.300,02 € when given 1214300.02 EUR', () => {
     // Node by default only ships with a limited set of locales
-    Intl.NumberFormat = <any> FakeNumberFormat;
+    global.Intl.NumberFormat = mockNumberFormat();
 
     const formatter = new CurrencyFormatter();
     formatter.locale = 'es-ES';
@@ -23,4 +26,8 @@ describe('CurrencyFormatter', () => {
 
     expect(returnValue).toBe("1.214.300,02 €");
   });
+
+  afterEach(() => {
+    global.Intl.NumberFormat = RealNumberFormat;
+  })
 });
