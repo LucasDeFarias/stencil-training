@@ -24,7 +24,7 @@ export class CurrencyFormatter {
       minimumFractionDigits: 2
     });
     const amountNumber = Number.parseFloat(this.currencyAmount.amount);
-    return formatter.format(amountNumber); 
+    return formatter.format(amountNumber);
   }
 
   render() {
