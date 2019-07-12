@@ -4,9 +4,9 @@ describe('CurrencyFormatter', () => {
   const RealNumberFormat = Intl.NumberFormat;
 
   function mockNumberFormat() {
-    return <any> class FakeNumberFormat {
-      format() {
-        return '1.214.300,02 €';
+    return <any> class FakeNumberFormat extends Intl.NumberFormat {
+      format(number: number) {
+        return number === 1214300.02 && '1.214.300,02 €';
       }
     }   
   }
