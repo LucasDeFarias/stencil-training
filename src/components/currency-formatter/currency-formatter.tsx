@@ -28,6 +28,6 @@ export class CurrencyFormatter {
   }
 
   render() {
-    return this.formattedCurrency();
+    return this.currencyAmount && this.formattedCurrency();
   }
 }
