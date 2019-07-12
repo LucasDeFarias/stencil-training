@@ -8,7 +8,7 @@ class FakeNumberFormat extends Intl.NumberFormat {
 
 describe('CurrencyFormatter', () => {
 
-  it('should display 1.214.300,02 € when given 1214300.02 EUR', () => {
+  it('should return 1.214.300,02 € when given 1214300.02 EUR', () => {
     // Node by default only ships with a limited set of locales
     Intl.NumberFormat = <any> FakeNumberFormat;
 
@@ -21,6 +21,6 @@ describe('CurrencyFormatter', () => {
 
     const returnValue = formatter.formattedCurrency();
 
-    expect(returnValue).toBe('1.214.300,02 €');
+    expect(returnValue).toBe("1.214.300,02 €");
   });
 });
