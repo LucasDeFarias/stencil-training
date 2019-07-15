@@ -1,5 +1,4 @@
-import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { DropdownList } from '../dropdown-list';
+import { E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('DropdownList', () => {
   let page: E2EPage;
