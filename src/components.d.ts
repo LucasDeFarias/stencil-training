@@ -9,12 +9,6 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface DropdownElement {
-    /**
-    * The dropdown element
-    */
-    'element': string;
-  }
   interface DropdownList {
     /**
     * The list of elements
@@ -24,6 +18,12 @@ export namespace Components {
     * Indicates if the dropdown is open
     */
     'open': boolean;
+  }
+  interface DropdownListElement {
+    /**
+    * The dropdown element
+    */
+    'element': string;
   }
   interface ElementAdd {}
   interface ElementSelection {
@@ -38,16 +38,16 @@ export namespace Components {
 declare global {
 
 
-  interface HTMLDropdownElementElement extends Components.DropdownElement, HTMLStencilElement {}
-  var HTMLDropdownElementElement: {
-    prototype: HTMLDropdownElementElement;
-    new (): HTMLDropdownElementElement;
-  };
-
   interface HTMLDropdownListElement extends Components.DropdownList, HTMLStencilElement {}
   var HTMLDropdownListElement: {
     prototype: HTMLDropdownListElement;
     new (): HTMLDropdownListElement;
+  };
+
+  interface HTMLDropdownListElementElement extends Components.DropdownListElement, HTMLStencilElement {}
+  var HTMLDropdownListElementElement: {
+    prototype: HTMLDropdownListElementElement;
+    new (): HTMLDropdownListElementElement;
   };
 
   interface HTMLElementAddElement extends Components.ElementAdd, HTMLStencilElement {}
@@ -68,8 +68,8 @@ declare global {
     new (): HTMLTrainingAppElement;
   };
   interface HTMLElementTagNameMap {
-    'dropdown-element': HTMLDropdownElementElement;
     'dropdown-list': HTMLDropdownListElement;
+    'dropdown-list-element': HTMLDropdownListElementElement;
     'element-add': HTMLElementAddElement;
     'element-selection': HTMLElementSelectionElement;
     'training-app': HTMLTrainingAppElement;
@@ -77,13 +77,6 @@ declare global {
 }
 
 declare namespace LocalJSX {
-  interface DropdownElement extends JSXBase.HTMLAttributes<HTMLDropdownElementElement> {
-    /**
-    * The dropdown element
-    */
-    'element'?: string;
-    'onSelectElement'?: (event: CustomEvent<any>) => void;
-  }
   interface DropdownList extends JSXBase.HTMLAttributes<HTMLDropdownListElement> {
     /**
     * The list of elements
@@ -93,6 +86,13 @@ declare namespace LocalJSX {
     * Indicates if the dropdown is open
     */
     'open'?: boolean;
+  }
+  interface DropdownListElement extends JSXBase.HTMLAttributes<HTMLDropdownListElementElement> {
+    /**
+    * The dropdown element
+    */
+    'element'?: string;
+    'onSelectElement'?: (event: CustomEvent<any>) => void;
   }
   interface ElementAdd extends JSXBase.HTMLAttributes<HTMLElementAddElement> {
     'onCreateElement'?: (event: CustomEvent<any>) => void;
@@ -106,8 +106,8 @@ declare namespace LocalJSX {
   interface TrainingApp extends JSXBase.HTMLAttributes<HTMLTrainingAppElement> {}
 
   interface IntrinsicElements {
-    'dropdown-element': DropdownElement;
     'dropdown-list': DropdownList;
+    'dropdown-list-element': DropdownListElement;
     'element-add': ElementAdd;
     'element-selection': ElementSelection;
     'training-app': TrainingApp;

@@ -25,7 +25,7 @@ describe('DropdownList', () => {
   });
 
   it('should not render any dropdown-element by default', async () => {
-    const li = await page.findAll('dropdown-list >>> div ul dropdown-element');
+    const li = await page.findAll('dropdown-list >>> div ul dropdown-list-element');
     expect(li.length).toBe(0);
   });
 
@@ -34,7 +34,7 @@ describe('DropdownList', () => {
       elm.elements = [ 'first', 'second' ];
     });
     await page.waitForChanges();
-    const dropdownElements = await page.findAll('dropdown-list >>> div ul dropdown-element');
+    const dropdownElements = await page.findAll('dropdown-list >>> div ul dropdown-list-element');
     expect(dropdownElements.length).toBe(2);
   });
   

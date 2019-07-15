@@ -1,11 +1,11 @@
 import { Component, Prop, h, EventEmitter, Event } from '@stencil/core';
 
 @Component({
-  tag: 'dropdown-element',
-  styleUrl: 'dropdown-element.css',
+  tag: 'dropdown-list-element',
+  styleUrl: 'dropdown-list-element.css',
   shadow: true
 })
-export class DropdownElement {
+export class DropdownListElement {
   /**
    * The dropdown element 
    */
@@ -19,7 +19,7 @@ export class DropdownElement {
 
   render() {
     return (
-        <li onClick={() => this.onSelectElement()}>{this.element}</li>
+      <li onClick={() => this.onSelectElement()}>{this.element}</li>
     );
   }
 }

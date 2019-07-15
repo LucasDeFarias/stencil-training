@@ -25,7 +25,7 @@ export class DropdownList {
         { this.open &&
           <ul>
             {
-              this.elements.map((el) => <dropdown-element element={el}></dropdown-element>)
+              this.elements.map((el) => <dropdown-list-element element={el}></dropdown-list-element>)
             }
           </ul>
         }

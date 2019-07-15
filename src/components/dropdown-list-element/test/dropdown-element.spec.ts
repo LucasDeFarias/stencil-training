@@ -1,7 +1,7 @@
-import { DropdownElement } from '../dropdown-element';
+import { DropdownListElement } from '../dropdown-list-element';
 
 it('should emit the same element when selected', async () => {
-  const dropdown = new DropdownElement();
+  const dropdown = new DropdownListElement();
   dropdown.element = 'fake element';
   spyOn(dropdown.selectElement, 'emit');
 
