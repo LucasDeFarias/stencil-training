@@ -89,7 +89,6 @@ declare namespace LocalJSX {
     * The list of elements
     */
     'elements'?: string[];
-    'onSelectElement'?: (event: CustomEvent<any>) => void;
     /**
     * Indicates if the dropdown is open
     */

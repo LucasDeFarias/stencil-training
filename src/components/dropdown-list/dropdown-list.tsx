@@ -16,8 +16,6 @@ export class DropdownList {
    */
   @Prop() open: boolean = true;
 
-  @Event() selectElement: EventEmitter;
-
   toggleStatus = () => this.open = !this.open;
 
   render() {
