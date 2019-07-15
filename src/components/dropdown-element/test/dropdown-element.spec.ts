@@ -1,5 +1,5 @@
 // import { newSpecPage } from '@stencil/core/testing';
-import { DropdownElement } from './dropdown-element';
+import { DropdownElement } from '../dropdown-element';
 
 // it('should render dropdown-element component', async () => {
 //   const page = await newSpecPage({
